@@ -1,0 +1,653 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+.notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
+@font-face {
+    font-family: 'Eulyoo1945-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* { margin: 0; padding: 0; }
+a { text-decoration: none; display: block; }
+li { list-style: none; }
+body { overflow-x: hidden; font-family: 'Noto Sans KR', sans-serif; color: #322316;}
+img { width: 100%; }
+.center { width: 1320px; margin: 0 auto; height: 100vh; overflow: hidden; }
+header, section, footer {
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+header {
+    height: 65px;
+    background-color: #fff;
+    padding-top: 16px;    
+    position: fixed;
+    z-index: 100;
+}
+/*로고*/
+header .logo {
+    float: left;
+    width: 168px;
+    margin-left: 50px;
+}
+/*주메뉴*/
+header nav {
+    float: left;
+    margin-left: 150px;
+}
+header nav li {
+    float: left;
+    position: relative;
+    text-align: center;
+}
+header nav li:hover ul {
+    opacity: 1;
+}
+header nav li:hover ul li {
+    overflow: visible;
+    /* padding: 0px 0; */
+}
+header nav ul li a {
+    width: 110px;
+    display: block;
+    color: #322316;
+    padding: 5px 20px;
+}
+header nav ul li:hover > a {
+    color: #322316;
+    font-weight: 600;
+}
+header nav > ul > li > a:after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: #322316;
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    display: block;
+    transition: all 0.15s ease-in;
+    z-index: 5;
+}
+header nav > ul > li:hover > a:after {
+    width: 100%;
+    left: 0;
+}
+/*서브메뉴*/
+header nav .sub {
+    position: absolute;
+    left: 0;
+    top: 49px;
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    opacity: 0;
+}
+header nav .sub li {
+    float: none;
+    font-size: 15px;
+    padding: 10px 0;
+}
+header nav .sub li:hover a {
+    background: #978069;
+    color: #fff;    
+    padding: 12px 20px;
+}
+header .header_icon {
+    float: right;
+    margin-top: 2px;
+    margin-right: 50px;
+}
+header .header_icon ul li {
+    float: left;
+    margin: 0 10px;
+}
+header .header_icon ul li i {
+    height: 40px;
+    float: left;
+    margin-right: 20px;
+}
+/*section*/
+section {
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: 140px;
+}
+section.s1 {padding: 0;}
+section h1 {
+    font-family: 'Eulyoo1945-SemiBold';
+    font-size: 46px;
+    text-align: center;
+}
+section p.small_title {
+    font-size: 16px;
+    text-align: center;
+    color: #4a3b2d;
+    margin: 20px 0 100px;
+}
+/*visual*/
+section .visual {
+    width: 100%;
+    height: 100vh;
+    /*vh:장치의 높이를 인식하는 단위*/
+    /*100vh:visual영역의 높이는 장치의 높이와 같음*/
+}
+section .visual div {
+    height: 100vh;
+}
+section .visual > div {
+    width: 100%;
+    position: absolute;         /*visual_bg랑 visual_des 겹침*/
+}
+section .visual .v1 {
+
+}
+section .visual .visual_bg div {
+    background-repeat: no-repeat;
+    background-position: -100px top;
+    background-size: cover;
+    width: 25%;
+    float: left;
+}
+section .visual .visual_bg .v1 {
+    background-image: url(../img/main1.png);
+}
+section .visual .visual_bg .v2 {
+    background-image: url(../img/main2.png);
+}
+section .visual .visual_bg .v3 {
+    background-image: url(../img/main3.png);
+}
+section .visual .visual_bg .v4 {
+    background-image: url(../img/main4.png);
+}
+section .visual .visual_des div {
+    box-sizing: border-box;
+    padding:230px 50px;
+    float: left;
+    width: 25%;
+    position: relative;
+    font-family: 'Eulyoo1945-SemiBold';
+}
+section .visual .visual_des div h1 {
+    color: #fff;
+    font-size: 34px;
+}
+section .visual .visual_des div h1 i {
+    height: 40px;
+    float: left;
+    margin-right: 20px;
+}
+section .visual .visual_des div h1 p {
+    float: left;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    padding-top: 5px;
+}
+section .visual .visual_des div> p {
+    color: #fff;
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+    font-size: 18px;
+    letter-spacing: 0.6px;
+    line-height: 25px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.65);
+}
+section .visual .visual_des .arrow {
+    position: absolute;
+    width: 52px;
+    top: 242px;
+    margin-left: 30px;
+}
+/*mySwiper1(슬라이드) welcome*/
+section.s2 .swiper {
+    width: 75%;
+    overflow: visible;
+    padding-top: 70px;              /*서브제목과의 여백*/
+    margin-left: 25%;
+}
+section.s2 .swiper .swiper-slide {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    transition: all 0.5s;
+}
+section.s2 .swiper .swiper-slide-active {
+    transform: scale(1.5);          /*원래 크기의 1.5배*/
+    z-index: 100;                   /*맨 앞으로 배치*/
+}
+section.s2 .swiper .s1 {
+    background-image: url(../img/sale01.png);
+}
+section.s2 .swiper .s2 {
+    background-image: url(../img/sale02.png);
+}
+section.s2 .swiper .s3 {
+    background-image: url(../img/sale03.png);
+}
+section.s2 .swiper .s4 {
+    background-image: url(../img/sale04.png);
+}
+section.s2 .swiper .swiper-button-next {
+    text-indent: -9999px;           /*들여쓰기*/
+    width: 66px;
+    position: absolute;
+    top: 410px;
+    right: 480px;
+}
+section.s2 .swiper .swiper-button-prev {
+    text-indent: -9999px;
+    width: 67px;
+    position: absolute;
+    top: 410px;
+    left: -180px;
+}
+section.s2 .swiper .swiper-slide .slide_des {
+    background-color: #f8f4ef73;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;          /*아래 위치*/
+    box-sizing: border-box;
+    padding-top: 16px;
+    padding: 0 10px;
+}
+section.s2 .swiper .swiper-slide .slide_des h1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 21px;
+    display: none;
+}
+section.s2 .swiper .swiper-slide .slide_des h1 span {
+    font-weight: bold;
+    color: #fc7251;
+    font-size: 9px;
+}
+/*이미지가 비활성화되있을 때 뷰 버튼 사라짐*/
+section.s2 .swiper .swiper-slide .slide_des a {
+    width: 100px;
+    margin: 0 auto;
+    background-color: #322316;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    font-family: 'Eulyoo1945-SemiBold';
+    font-size: 10px;
+    margin-top: 12px;
+    display: none;      /*안 보임*/
+}
+section.s2 .swiper .swiper-slide .slide_des a:hover {       /*마우스오버시 불투명도*/
+    background-color: #322316e7;
+}
+/*대표이미지에서만 반투명 배경 보임*/
+section.s2 .swiper .swiper-slide-active .slide_des {
+    background-color: rgba(255, 255, 255, 0.568);
+    height: 40%;
+    position: absolute;
+    bottom: 0;          /*아래 위치*/
+    box-sizing: border-box;
+    padding-top: 16px;
+}
+/*대표이미지에서만 뷰 버튼 보임*/
+section.s2 .swiper .swiper-slide-active .slide_des a {
+    display: block;
+}
+/*대표이미지에서만 텍스트 보임*/
+section.s2 .swiper .swiper-slide-active .slide_des h1 {
+    display: block;
+}
+/*best seller*/
+section.s3 {
+    background-color: #f8f4ef;
+}
+/*s3 탭메뉴*/
+.tab {
+    width: 100%;    
+}
+.tab > div {
+    width: 100%;
+    float: left;
+}
+/*s3 탭메뉴 - 탭제목*/
+.tab .tab_title ul li {
+    float: left;
+    width: 264px;
+    margin-bottom: 30px;
+    margin-top: -50px;
+}
+.tab .tab_title ul li a {
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 16px;
+    text-align: center;
+    color: #7e7064;    
+}
+.tab .tab_title ul li a.active {
+    background-color: #e6dfd7;
+    color: #322316;
+    font-weight: 600;
+}
+.tab .tab_con {
+    height: 430px;
+    position: relative;         /*자식객체 div 겹칠 때 부모기준으로 배치*/
+}
+.tab .tab_con > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40;
+    box-sizing: border-box;
+}
+.tab .tab_con > div ul li {
+    float: left;
+    width: 430px;
+    margin-right: 15px;
+}
+.tab .tab_con > div ul li:last-child {
+    margin-right: 0;
+}
+.tab .tab_con div ul li .tab_img {
+    height: 240px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.tab .tab_con div ul li .t1 {
+    background-image: url(../img/best_bed02.png);
+}
+.tab .tab_con div ul li .t2 {
+    background-image: url(../img/best_bed01.png);
+}
+.tab .tab_con div ul li .t3 {
+    background-image: url(../img/best02.png);
+}
+.tab .tab_con div ul li .t4 {
+    background-image: url(../img/best_bed02.png);
+}
+.tab .tab_con div ul li .t5 {
+    background-image: url(../img/best_bed01.png);
+}
+.tab .tab_con div ul li .t6 {
+    background-image: url(../img/best_bed03.png);
+}
+.tab .tab_con div ul li .t7 {
+    background-image: url(../img/best_kids01.png);
+}
+.tab .tab_con div ul li .t8 {
+    background-image: url(../img/best_kids02.png);
+}
+.tab .tab_con div ul li .t9 {
+    background-image: url(../img/best_kids03.png);
+}
+.tab .tab_con div ul li .t10 {
+    background-image: url(../img/best02.png);
+}
+.tab .tab_con div ul li .t11 {
+    background-image: url(../img/best_living01.png);
+}
+.tab .tab_con div ul li .t12 {
+    background-image: url(../img/best_living02.png);
+}
+.tab .tab_con div ul li .t13 {
+    background-image: url(../img/best_homewear01.png);
+}
+.tab .tab_con div ul li .t14 {
+    background-image: url(../img/best_homewear02.png);
+}
+.tab .tab_con div ul li .t15 {
+    background-image: url(../img/best_homewear03.png);
+}
+.tab .tab_con div ul li .tab_img i {
+    width: 80px;
+    height: 25px;
+    background-color: #aa9c8f91;
+    font-size: 16px;
+    color: #fff;
+    font-style: normal;
+    font-weight: bold;
+    padding: 5px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;      /*대문자로 변환*/
+}
+.tab .tab_con div ul li p {
+    color: #322316;
+    padding-top: 13px;
+    font-weight: 500;
+    float: left;
+}
+.tab .tab_con div ul li .icon1,
+.tab .tab_con div ul li .icon2 {
+    padding-top: 17px;
+    float: right;
+}
+.tab .tab_con div ul li .icon1 {
+    margin-right: 3px;
+}
+/*view btn*/
+section.s3 .veiw_btn {
+    width: 100%;
+    float: left;
+    margin-top: -60px;
+}
+section.s3 .veiw_btn a {
+    width: 260px;
+    height: 80px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    line-height: 80px;
+    text-align: center;
+    font-size: 18px;
+    color: #322316;
+    border: 1px solid #322316;
+    font-family: 'Eulyoo1945-SemiBold';    
+}
+section.s3 .veiw_btn a p,
+section.s3 .veiw_btn a span {
+    float: left;
+}
+section.s3 .veiw_btn a p {
+    margin-left: 46px;
+}
+section.s3 .veiw_btn a span {
+    width: 31px;
+    margin: -5px 36px;
+    display: block;
+    float: right;
+}
+/*s4 gallery*/
+section.s4 .center {
+    position: relative;     /*.s4_right영역의 위치 잡을 때 기준이 됨*/
+}
+section.s4 h1 {
+    text-align: left;
+    margin: 110px 0 0 0;
+}
+section.s4 p {
+    text-align: left;
+    line-height: 30px;
+}
+section.s4 .s4_left .swiper .swiper-slide h3 {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    background-color: rgba(70, 70, 70, 0.2);
+    margin-top: 150px;
+    padding: 5px;
+}
+section.s4 .gallery {
+    width: 650px;
+    margin-top: 130px;
+    margin-left: 30px;
+}
+section.s4 .s4_left {
+    float: left;
+    width: 650px;
+    position: relative;     /*z-index 값 적용*/
+    z-index: 5;             /*.s4_right영역보다 위에 배치*/
+}
+section.s4 .s4_right {
+    position: absolute;     /*.s4_left영역과 겹침*/
+    z-index: 1;
+    top: 50px;
+    right: 0;
+    width: 900px;
+}
+section.s4 .s4_right .swiper {
+    width: 900px;
+}
+section.s4 .swiper .swiper-slide {
+    height: 180px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+section.s4 .s4_right .swiper .swiper-slide {
+    height: 540px;
+}
+section.s4 .swiper-button-next2 {
+    width: 46px;
+    position: absolute;
+    right: -58px;
+    bottom: 50px;
+    z-index: 20;
+}
+section.s4 .swiper-button-prev2 {
+    width: 46px;
+    position: absolute;
+    left: 2px;
+    bottom: 50px;
+    z-index: 20;
+}
+section.s4 .swiper .g1 {
+    background-image: url(../img/review3.png);
+}
+section.s4 .swiper .g2 {
+    background-image: url(../img/review2.png);
+}
+section.s4 .swiper .g3 {
+    background-image: url(../img/review1.png);
+}
+section.s4 .swiper .g4 {
+    background-image: url(../img/review4.png);
+}
+/*vlog*/
+section.s5 {
+    height: 750px;
+    background-image: url(../img/vlog_bg.png);
+}
+section.s5 .center {
+    height: auto;
+}
+section.s5 .vlog {
+    width: 1170px;
+    margin: 0 auto;
+    margin-top: -30px;
+}
+section.s5 .vlog ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+section.s5 .vlog ul li:last-child {
+    margin-right: 0;
+}
+/*notice*/
+section.s6 {
+    height: 360px;
+    margin-top: -70px;
+}
+section.s6 .center {
+    height: auto;
+}
+section.s6 ul li {
+    float: left;
+    padding-right: 50px;
+}
+section.s6 ul li:last-child {
+    padding-right: 0;
+}
+section.s6 ul li h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+section.s6 ul li p {
+    font-size: 14px;
+    line-height: 24px;
+    color: #726458;
+}
+/*footer*/
+footer {
+    background-color: #f8f4ef73;
+    height: 260px;
+}
+footer .center {
+    height: auto;
+}
+footer .top_footer {
+    height: 50px;
+    border-top: 1px solid #d1c9c0;
+    border-bottom: 1px solid #d1c9c0;
+}
+footer .top_footer .user ul li {
+    float: left;
+    border-left: 1px solid #d1c9c0;
+}
+footer .top_footer .user ul li:last-child {
+    border-right: 1px solid #d1c9c0;
+}
+/*()숫자 번째의 글자만 색 변경*/
+/* footer .top_footer .user ul li:nth-child(4) a {
+    color: #fc7251;
+} */
+footer .top_footer .user ul li a {
+    color: #726458;
+    padding: 14px 25px;
+}
+/*sns*/
+footer .top_footer .sns {
+    float: right;
+}
+footer .top_footer .sns ul li {
+    padding: 6px 16px;
+    float: left;
+    border-left: 1px solid #d1c9c0;
+}
+footer .top_footer .sns ul li:last-child {
+    border-right: 1px solid #d1c9c0;
+}
+footer .top_footer .sns ul li a {
+    width: 34px;
+}
+footer .bottom_footer .addr {
+    text-align: center;
+    margin: 30px 0;
+}
+footer .bottom_footer .addr ul li {
+    display: inline-block;
+    padding: 0 10px;
+    text-align: center;
+    border-right: 1px solid #726458;
+    color: #322316;
+}
+footer .bottom_footer .addr ul li:last-child {
+    border-right: 0px;
+}
+footer .bottom_footer .addr ul li h4 {
+    font-size: 14px;
+    font-weight: 300;
+}
+footer .bottom_footer .addr ul li h4 a {
+    color: #322316;
+    display: inline-block;
+}
+footer .bottom_footer .addr p {
+    padding-top: 20px;
+    font-size: 12px;
+    color: #726458c0;
+}
