@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 .notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
 @font-face {
     font-family: 'Eulyoo1945-SemiBold';
@@ -43,6 +43,7 @@ header nav li {
 }
 header nav li:hover ul {
     opacity: 1;
+    visibility: visible;
 }
 header nav li:hover ul li {
     overflow: visible;
@@ -52,7 +53,7 @@ header nav ul li a {
     width: 110px;
     display: block;
     color: #322316;
-    padding: 5px 20px;
+    padding: 5px 20px 30px;
 }
 header nav ul li:hover > a {
     color: #322316;
@@ -64,7 +65,7 @@ header nav > ul > li > a:after {
     height: 3px;
     background-color: #322316;
     position: absolute;
-    bottom: -15px;
+    bottom: 10px;
     left: 50%;
     display: block;
     transition: all 0.15s ease-in;
@@ -83,16 +84,19 @@ header nav .sub {
     text-align: center;
     background-color: #fff;
     opacity: 0;
+    visibility:hidden;
 }
 header nav .sub li {
     float: none;
     font-size: 15px;
     padding: 10px 0;
 }
+header nav .sub li a {
+    padding: 12px 20px;
+}
 header nav .sub li:hover a {
     background: #978069;
-    color: #fff;    
-    padding: 12px 20px;
+    color: #fff;   
 }
 header .header_icon {
     float: right;
@@ -119,12 +123,28 @@ section h1 {
     font-family: 'Eulyoo1945-SemiBold';
     font-size: 46px;
     text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    /* margin-top: 20px; */
+    /*화면이 스크롤될 때 아래에서 위로 올라오면서 보이는 애니메이션*/
+}
+section h1.active {
+    opacity: 1;
+    margin-top: 0;
 }
 section p.small_title {
     font-size: 16px;
     text-align: center;
     color: #4a3b2d;
     margin: 20px 0 100px;
+    opacity: 0;
+    transition: all 0.5s;
+    transition-delay: 0.2s;
+}
+/*화면이 스크롤될 때 아래에서 위로 올라오면서 보이는 애니메이션*/
+section p.small_title.active {
+    margin-top: 20px;
+    opacity: 1;
 }
 /*visual*/
 section .visual {
@@ -133,56 +153,111 @@ section .visual {
     /*vh:장치의 높이를 인식하는 단위*/
     /*100vh:visual영역의 높이는 장치의 높이와 같음*/
 }
-section .visual div {
-    height: 100vh;
-}
 section .visual > div {
+    height: 100vh;
     width: 100%;
-    position: absolute;         /*visual_bg랑 visual_des 겹침*/
+    position: absolute;     /*visual_bg와 visual_des 겹침*/
+    top: 0;
+    left: 0;
 }
-section .visual .v1 {
-
-}
-section .visual .visual_bg div {
-    background-repeat: no-repeat;
-    background-position: -100px top;
-    background-size: cover;
-    width: 25%;
-    float: left;
+section .visual .visual_bg > div {
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    width: 30.20%;
+    /* float: left; */
+    position: absolute;
+    height: 100vh;
+    top: 0;
 }
 section .visual .visual_bg .v1 {
-    background-image: url(../img/main1.png);
+    left: 0;
 }
 section .visual .visual_bg .v2 {
-    background-image: url(../img/main2.png);
+    left: 22.39%;
 }
 section .visual .visual_bg .v3 {
-    background-image: url(../img/main3.png);
+    left: 47.39%;   
 }
 section .visual .visual_bg .v4 {
+    right: 0;
+}
+section .visual .visual_bg div div {
+    transform: matrix(1,0,0,1,0,0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+section .visual .visual_bg .v1  .v1_img{
+    background-image: url(../img/main1.png);
+}
+section .visual .visual_bg .v2 .v2_img{
+    background-image: url(../img/main2.png);
+}
+section .visual .visual_bg .v3 .v3_img {
+    background-image: url(../img/main3.png);
+}
+section .visual .visual_bg .v4 .v4_img {
     background-image: url(../img/main4.png);
 }
-section .visual .visual_des div {
-    box-sizing: border-box;
+/*마우스오버시 반투명 배경*/
+section .visual .visual_bg div .tran_bg {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    display: none;
+}
+section .visual .visual_des > div {
+    /* box-sizing: border-box;
     padding:230px 50px;
-    float: left;
+    float: left; */
     width: 25%;
-    position: relative;
+    height: 100vh;
+    position: absolute;
     font-family: 'Eulyoo1945-SemiBold';
+}
+section .visual .visual_des .v1 {
+    left: 0;
+}
+section .visual .visual_des .v2 {
+    left: 25vw;
+}
+section .visual .visual_des .v3 {
+    left: 50vw;
+}
+section .visual .visual_des .v4 {
+    right: 0;
+}
+section .visual .visual_des div .des_txt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
 }
 section .visual .visual_des div h1 {
     color: #fff;
     font-size: 34px;
+    opacity: 1;
+    margin-top: 12vw;
 }
 section .visual .visual_des div h1 i {
     height: 40px;
     float: left;
     margin-right: 20px;
+    margin-top: 5px;
 }
 section .visual .visual_des div h1 p {
     float: left;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    padding-top: 5px;
+    margin-top: 5px;
 }
 section .visual .visual_des div> p {
     color: #fff;
@@ -193,7 +268,17 @@ section .visual .visual_des div> p {
     letter-spacing: 0.6px;
     line-height: 25px;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.65);
+    padding-left: 3.3vw;
+    opacity: 0;
+    transition: all 0.5s;
 }
+section .visual .visual_des .v4 .des_txt > p {
+    padding-left: 6vw;
+}
+section .visual .visual_des div:hover div > p {
+    opacity: 1;
+}
+
 section .visual .visual_des .arrow {
     position: absolute;
     width: 52px;
@@ -204,8 +289,16 @@ section .visual .visual_des .arrow {
 section.s2 .swiper {
     width: 75%;
     overflow: visible;
-    padding-top: 70px;              /*서브제목과의 여백*/
+    padding-top: 100px;              /*서브제목과의 여백*/
     margin-left: 25%;
+    opacity: 0;
+    transition:all 0.5s;
+    transition-delay:0.4s;
+}
+/* 화면이 스크롤될 때 아래에서 위로 올라오면서 보이는 애니메이션 */
+section.s2 .swiper.active {
+    padding-top:70px;
+    opacity: 1;
 }
 section.s2 .swiper .swiper-slide {
     background-position: center;
@@ -306,7 +399,15 @@ section.s3 {
 }
 /*s3 탭메뉴*/
 .tab {
-    width: 100%;    
+    width: 100%; 
+    opacity: 0;
+    transition:all 0.5s;
+    transition-delay:0.4s;
+}
+/* 화면이 스크롤 될 때 아래에서 올라오는 애니메이션 */
+.tab.active {
+    opacity: 1;
+    margin-top: 0;
 }
 .tab > div {
     width: 100%;
@@ -484,6 +585,14 @@ section.s4 .gallery {
     width: 650px;
     margin-top: 130px;
     margin-left: 30px;
+    opacity: 0;
+    transition:all 0.5s;
+    transition-delay:0.4s;
+}
+/* 화면 스크롤 애니메이션 */
+section.s4 .gallery.active {
+    margin-top:150px;
+    opacity: 1;
 }
 section.s4 .s4_left {
     float: left;
@@ -497,6 +606,13 @@ section.s4 .s4_right {
     top: 50px;
     right: 0;
     width: 900px;
+    opacity: 0;
+    transition:all 0.5s;
+    transition-delay:0.6s;
+}
+section.s4 .s4_right.active {
+    opacity: 1;
+    top:100px;
 }
 section.s4 .s4_right .swiper {
     width: 900px;
@@ -548,6 +664,13 @@ section.s5 .vlog {
     width: 1170px;
     margin: 0 auto;
     margin-top: -30px;
+    opacity: 0;
+    transition:all 0.5s;
+    transition-delay:0.4s;
+}
+section.s5 .center .vlog.active {
+    opacity: 1;
+    margin-top: 0;
 }
 section.s5 .vlog ul li {
     display: inline-block;
