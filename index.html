@@ -150,39 +150,59 @@
         <section class="s1">
             <div class="visual">
                 <div class="visual_bg">
-                    <div class="v1"></div>
-                    <div class="v2"></div>
-                    <div class="v3"></div>
-                    <div class="v4"></div>
+                    <div class="v1 first">
+                        <div class="v1_img"></div>
+                        <div class="tran_bg"></div>
+                    </div>
+                    <div class="v2">
+                        <div class="v2_img"></div>
+                        <div class="tran_bg"></div>
+                    </div>
+                    <div class="v3">
+                        <div class="v3_img"></div>
+                        <div class="tran_bg"></div>
+                    </div>
+                    <div class="v4 last">
+                        <div class="v4_img"></div>
+                        <div class="tran_bg"></div>
+                    </div>
                 </div>
                 <div class="visual_des">
                     <div class="v1 des">
-                        <h1><i><img src="img/icon_bed1.png" alt="아이콘"></i><p>BEDDING</p></h1>
-                        <p>가격의 거품은 줄이고 품질은 올린<br>디자이너가 만든 합리적인 침구</p>
-                        <b class="arrow">
-                            <img src="img/arrow_main.png" alt="화살표">
-                        </b>
+                        <div class="des_txt">
+                            <h1><i><img src="img/icon_bed1.png" alt="아이콘"></i><p>BEDDING</p></h1>
+                            <p>가격의 거품은 줄이고 품질은 올린<br>디자이너가 만든 합리적인 침구</p>
+                            <b class="arrow">
+                                <img src="img/arrow_main.png" alt="화살표">
+                            </b>
+                        </div>
                     </div>
                     <div class="v2 des">
-                        <h1><i><img src="img/icon_kids1.png" alt="아이콘"></i><p>MAATILA KIDS</p></h1>
-                        <p>유해 성분으로부터 아이들이<br>안심하고 숙면할 수 있도록</p>
-                        <b class="arrow">
-                            <img src="img/arrow_main.png" alt="화살표">
-                        </b>
+                        <div class="des_txt">
+                            <h1><i><img src="img/icon_kids1.png" alt="아이콘"></i><p>MAATILA KIDS</p></h1>
+                            <p>유해 성분으로부터 아이들이<br>안심하고 숙면할 수 있도록</p>
+                            <b class="arrow">
+                                <img src="img/arrow_main.png" alt="화살표">
+                            </b>
+                        </div>                        
                     </div>
                     <div class="v3 des">
-                        <h1><i><img src="img/icon_curtain1.png" alt="아이콘"></i><p>CURTAIN</p></h1>
-                        <p>자연을 모티브로 한 유니크한 디자인,<br>품질 좋은 국내산 소재</p>
-                        <b class="arrow">
-                            <img src="img/arrow_main.png" alt="화살표">
-                        </b>
+                        <div class="des_txt">
+                            <h1><i><img src="img/icon_curtain1.png" alt="아이콘"></i><p>CURTAIN</p></h1>
+                            <p>자연을 모티브로 한 유니크한 디자인,<br>품질 좋은 국내산 소재</p>
+                            <b class="arrow">
+                                <img src="img/arrow_main.png" alt="화살표">
+                            </b>
+                        </div>                        
                     </div>
                     <div class="v4 des">
-                        <h1><i><img src="img/icon_homewear1.png" alt="아이콘"></i><p>HOME WEAR</p></h1>
-                        <p>외출할 때도 입을 수 있는 라운지웨어부터<br>프리미엄 순면 홈웨어까지</p>
-                        <b class="arrow">
-                            <img src="img/arrow_main.png" alt="화살표">
-                        </b>
+                        <div class="des_txt">
+                            <h1><i><img src="img/icon_homewear1.png" alt="아이콘"></i><p>HOME WEAR</p></h1>
+                            <p>외출할 때도 입을 수 있는 라운지웨어부터<br>프리미엄 순면 홈웨어까지</p>
+                            <b class="arrow">
+                                <img src="img/arrow_main.png" alt="화살표">
+                            </b>
+                        </div>                        
                     </div>                    
                 </div>
             </div>
@@ -615,5 +635,213 @@
             </div>
         </footer>
     </div>
+
+    <!--아코디언 메뉴 제이쿼리-->
+    <script src="https://code.jquery.com/jquery-1.11.0.js"></script>
+    <script>
+        //버전이 다른 3개의 제이쿼리 사용시 제이쿼리의 충돌을 막기위해 제이쿼리 다시 정의함 $j=jQuery
+        var $j = $.noConflict();
+        $j(document).ready(function(){
+        //pdt_fix() 함수 호출
+        pdt_fix();
+        //menuWidthSet() 함수 호출
+        menuWidthSet();
+            //.visual_des의 직속자식객체 div에 마우스오버 이벤트 설정
+
+        $j('.visual_des > div').hover( function (){
+            //.s1객체의 높이값을 _height변수에 저장
+            var _height = $j('section.s1').height();
+            //$j(this) : 마우스오버이벤트 발생한 객체 가리킴 (.visual_des > div)
+            //m_width_over함수 호출하면서 .visual_des > div 객체를 매개변수에 전달
+            m_width_over( $j(this) );
+            //만약 마우스오버한 객체가 v1이거나, 또는 v4라면
+            if ( $j(this).hasClass('v1') || $j(this).hasClass('v4') )
+            {
+                //v1 또는 v4영역의 가로길이 30%로 늘림
+                //clearQueue()는 큐 메모리를 청소하라는 메서드
+                $j(this).clearQueue().animate({'width':'30%'});
+            }
+        //.visual_des의 직속자식객체 duv에서 마우스를 아웃시
+        },function (){
+            m_width_out( $j(this) );
+            //m_width_out함수 호출하면서 .visual_des > div 객체를 매개변수에 전달
+            if ( $j(this).hasClass('v1') || $j(this).hasClass('v4') )
+            {
+                //v1 또는 v4영역의 가로길이를 25%로 줄임
+                $j(this).clearQueue().animate({'width':'25%'});
+            }
+        });
+        //pdt_fix 함수 선언
+        function pdt_fix(){
+            //.s1의 높이값 * 0.166~49를 계산하여 _mgb변수에 저장
+            var _mgb = $j('section.s1').height() * 0.166-49;
+            //.s1의 높이값 * 0.108를 계산하여 _mgb2변수에 저장
+            var _mgb2 = $j('section.s1').height() * 0.108;
+            //.s1의 높이값을 _box 변수에 저장
+            var _box = $j('section.s1').height() ; //* 0.042
+            //.visual_des 영역의 제목(h1)의 왼쪽 여백값 지정
+            $j('.visual_des h1').css('margin-left','3vw');
+        }
+
+        var _defaultWidth;
+        var _defaultHeight;
+        var _defaultGap;
+
+        //menuWidthSet 함수 선언
+        function menuWidthSet(){
+            _defaultWidth = Math.round($j('section.s1').width() / 4);
+            _defaultGap = Math.round($j('section.s1').width() * 0.026);
+            _defaultHeight = $j('section.s1').height();
+
+            $j('.visual_bg > div').not('.first, .last').css({'clip':'rect(0px, '+ (_defaultWidth + 100) +'px, '+_defaultHeight + 'px, ' + _defaultGap + 'px)'});
+            $j('.visual_bg > div.first').css({'clip':'rect(0px, '+ (_defaultWidth+_defaultGap*2) +'px, '+_defaultHeight + 'px, ' +  '0px)'});
+            $j('.visual_bg > div.last').css({'clip':'rect(0px, '+ (_defaultWidth+_defaultGap*2) +'px, '+_defaultHeight + 'px, ' + (_defaultGap*2) +'px)'});
+        }
+
+        function m_width_over( $this ){
+            
+            var _currIndex = $this.index();
+            var _gapX2 = _defaultGap*2;
+            var _gapX3 = _defaultGap*3;
+
+            if ( $this.index() == 0 )
+            {
+                $j('.visual_bg .v1').clearQueue().animate({'clip' : 'rect(0px, '+ ( _defaultWidth + _gapX2 ) +'px, '+_defaultHeight + 'px, 0px)'});
+                $j('.visual_bg .v2').clearQueue().animate({'clip' : 'rect(0px, '+ ( _defaultWidth + _defaultGap + 1 ) +'px, '+_defaultHeight + 'px, ' + (_gapX3-1) +'px)'});
+
+                $j('.visual_des .arrow img').attr('src','img/arrow.png');
+                $j('.visual_des .v1 .arrow img').attr('src','img/arrow.png');
+                
+                //v1영역에 마우스오버시 자식객체 h1과 p태그의 위치값 변경
+                $j('.visual_des .v1 h1').css('margin-left','3vw');
+                $j('.visual_des .v2 h1').css('margin-left','7vw');
+
+                
+                //반투명 사각형
+                $j('.tran_bg').hide();
+                $j('.visual_bg .v1 .tran_bg').fadeIn();
+            }
+            //인덱스 번호가 1이라면 (v2영역에 마우스오버시)
+            else if ( $this.index() == 1 )
+            {
+                $j('.visual_bg .v1').clearQueue().animate({'clip' : 'rect(0px, '+ _defaultWidth +'px, '+_defaultHeight + 'px, 0px)'});
+                $j('.visual_bg .v2').clearQueue().animate({'clip' : 'rect(0px, '+ ( _defaultWidth + _gapX2 ) +'px, '+_defaultHeight + 'px, 0px)'});
+                $j('.visual_bg .v3').clearQueue().animate({'clip' : 'rect(0px, '+ ( _defaultWidth + _defaultGap ) +'px, '+_defaultHeight + 'px, ' + (_gapX2-1) +'px)'});
+
+                //원래 화살표
+                $j('.visual_des .arrow img').attr('src','img/arrow.png');
+                //v1영역의 화살표 변경
+                $j('.visual_des .v2 .arrow img').attr('src','img/arrow.png');
+
+                $j('.visual_des h1').css('margin-left','5vw')
+                $j('.visual_des .v1 h1').css('margin-left','3vw');
+                $j('.visual_des .v3 h1').css('margin-left','7vw');
+                
+            
+                //반투명 사각형
+                $j('.tran_bg').hide();
+                $j('.visual_bg .v2 .tran_bg').fadeIn();
+            }
+            else if ( $this.index() == 2 )
+            {
+                $j('.visual_bg .v2').clearQueue().animate({'clip' : 'rect(0px, '+  _defaultWidth  +'px, '+_defaultHeight + 'px, 50px)'});
+                $j('.visual_bg .v3').clearQueue().animate({'clip' : 'rect(0px, '+ ( _defaultWidth + _gapX2 + 1 ) +'px, '+_defaultHeight + 'px, 0px)'});
+                $j('.visual_bg > .v4').clearQueue().animate({'clip' : 'rect(0px, '+ ( _defaultWidth + _defaultGap*2 ) +'px, '+_defaultHeight + 'px, ' + (_gapX3-1) +'px)'});
+
+                $j('.visual_des .arrow img').attr('src','img/arrow.png');
+                $j('.visual_des .v3 .arrow img').attr('src','img/arrow.png');
+
+                $j('.visual_des h1').css('margin-left','5vw');
+                $j('.visual_des .v1 h1').css('margin-left','3vw');
+                $j('.visual_des .v4 h1').css('margin-left','7vw');
+                
+                
+                //반투명 사각형
+                $j('.tran_bg').hide();
+                $j('.visual_bg .v3 .tran_bg').fadeIn();
+            }
+            else
+            {
+                $j('.visual_bg .v3').clearQueue().animate({'clip' : 'rect(0px, '+ ( _defaultWidth ) +'px, '+_defaultHeight + 'px, ' + _defaultGap +'px)'});
+                $j('.visual_bg .v4').clearQueue().animate({'clip' : 'rect(0px, '+ ( _defaultWidth + _gapX2 ) +'px, '+_defaultHeight + 'px, ' + '0px)'});
+
+                $j('.visual_des .arrow img').attr('src','img/arrow.png');
+                $j('.visual_des .v4 .arrow img').attr('src','img/arrow.png');
+
+                $j('.visual_des h1').css('margin-left','5vw');
+                $j('.visual_des .v1 h1').css('margin-left','3vw');
+                
+                //반투명 사각형
+                $j('.tran_bg').hide();
+                $j('.visual_bg .v4 .tran_bg').fadeIn();
+            }
+        }
+
+        function m_width_out( $this ){
+            var _currIndex = $this.index();
+
+            $j('.visual_bg > div').not('.first, .last').clearQueue().animate({'clip':'rect(0px, '+ (_defaultWidth + 100) +'px, '+_defaultHeight + 'px, ' + _defaultGap + 'px)'});
+            $j('.visual_bg > .first').clearQueue().animate({'clip':'rect(0px, '+ (_defaultWidth+_defaultGap*2) +'px, '+_defaultHeight + 'px, ' +  '0px)'});
+            $j('.visual_bg > .last').clearQueue().animate({'clip':'rect(0px, '+ (_defaultWidth+_defaultGap*2) +'px, '+_defaultHeight + 'px, ' +  (_defaultGap*2)  + 'px)'});
+            $j('.visual_des .arrow img').attr('src','img/arrow.png');
+            $j('.visual_des h1').css('margin-left','5vw');
+            $j('.visual_des .v1 h1').css('margin-left','3vw');
+
+            //반투명 사각형
+            $j('.tran_bg').hide();            
+        }
+
+
+        function getStyle(elem, name) {
+            return (elem.currentStyle && elem.currentStyle[name]) || elem.style[name];
+        }
+
+        function getClip(elem) {
+            var cssClip = jQuery(elem).css('clip') || '';
+
+            if (!cssClip) {
+                // Try to get the clip rect another way for IE8.
+                // This is a workaround for jQuery's css('clip') returning undefined
+                // when the clip is defined in an external stylesheet in IE8. -JPOEHLS
+                var pieces = {
+                    top: getStyle(elem, 'clipTop'),
+                    right: getStyle(elem, 'clipRight'),
+                    bottom: getStyle(elem, 'clipBottom'),
+                    left: getStyle(elem, 'clipLeft')
+                };
+
+                if (pieces.top && pieces.right && pieces.bottom && pieces.left) {
+                    cssClip = 'rect(' + pieces.top + ' ' + pieces.right + ' ' + pieces.bottom + ' ' + pieces.left + ')';
+                }
+            }
+
+            // Strip commas and return.
+            return cssClip.replace(/,/g, ' ');
+        }
+
+        jQuery.fx.step.clip = function (fx) {
+            if (fx.pos === 0) {
+                var cRE = /rect\(([0-9\.]{1,})(px|em)[,]?\s+([0-9\.]{1,})(px|em)[,]?\s+([0-9\.]{1,})(px|em)[,]?\s+([0-9\.]{1,})(px|em)\)/;
+
+                fx.start = cRE.exec(getClip(fx.elem));
+                if (typeof fx.end === 'string') {
+                    fx.end = cRE.exec(fx.end.replace(/,/g, ' '));
+                }
+            }
+            if (fx.start && fx.end) {
+                var sarr = new Array(), earr = new Array(), spos = fx.start.length, epos = fx.end.length,
+                emOffset = fx.start[ss + 1] == 'em' ? (parseInt(j(fx.elem).css('fontSize')) * 1.333 * parseInt(fx.start[ss])) : 1;
+                for (var ss = 1; ss < spos; ss += 2) { sarr.push(parseInt(emOffset * fx.start[ss])); }
+                for (var es = 1; es < epos; es += 2) { earr.push(parseInt(emOffset * fx.end[es])); }
+                fx.elem.style.clip = 'rect(' +
+                parseInt((fx.pos * (earr[0] - sarr[0])) + sarr[0]) + 'px ' +
+                parseInt((fx.pos * (earr[1] - sarr[1])) + sarr[1]) + 'px ' +
+                parseInt((fx.pos * (earr[2] - sarr[2])) + sarr[2]) + 'px ' +
+                parseInt((fx.pos * (earr[3] - sarr[3])) + sarr[3]) + 'px)';
+            }
+        }
+    });
+
+    </script>
 </body>
 </html>
